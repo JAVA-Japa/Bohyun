@@ -13,8 +13,8 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
         arr = new int[n];
-
         st = new StringTokenizer(br.readLine());
+
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
@@ -22,32 +22,34 @@ public class Main {
         Arrays.sort(arr);
 
         int m = Integer.parseInt(br.readLine());
-
         st = new StringTokenizer(br.readLine());
+
         for (int i = 0; i < m; i++) {
             int result = BinarySearch(Integer.parseInt(st.nextToken()));
-            if (result != -1) {
-                System.out.print(1 + " ");
-            } else {
-                System.out.print(0 + " ");
+            if(result == -1){
+                System.out.print("0 ");
+            }else{
+                System.out.print("1 ");
             }
+
         }
 
 
     }
 
-    private static int BinarySearch(int b) {
+    private static int BinarySearch(int input) {
+
         int l = 0;
-        int r = arr.length - 1;
+        int r = arr.length-1;
         int m;
 
         while (l <= r) {
             m = (l + r) / 2;
-            if (arr[m] < b) {
-                l = m + 1;
-            } else if (arr[m] > b) {
-                r = m - 1;
-            } else {
+            if(arr[m] < input){
+                l = m+1;
+            } else if (arr[m] > input) {
+                r = m -1;
+            }else{
                 return m;
             }
         }
